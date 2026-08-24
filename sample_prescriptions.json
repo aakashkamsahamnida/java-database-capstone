@@ -1,0 +1,14 @@
+[
+  {
+    "appointmentId": 1,
+    "patientId": 10,
+    "doctorId": 2,
+    "diagnosis": "Acute Bronchitis",
+    "medications": [
+      { "name": "Amoxicillin", "dosage": "500mg", "frequency": "Twice daily" },
+      { "name": "Cough Syrup", "dosage": "10ml", "frequency": "Before sleep" }
+    ],
+    "notes": "Rest and drink plenty of fluids.",
+    "issuedDate": "2026-08-24T10:30:00Z"
+  }
+]

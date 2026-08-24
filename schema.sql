@@ -1,0 +1,22 @@
+CREATE DATABASE IF NOT EXISTS smart_clinic;
+USE smart_clinic;
+
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE appointments (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    patient_id BIGINT NOT NULL,
+    doctor_id BIGINT NOT NULL,
+    appointment_date DATETIME NOT NULL,
+    status VARCHAR(20) DEFAULT 'SCHEDULED',
+    reason TEXT,
+    FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES users(id) ON DELETE CASCADE
+);
