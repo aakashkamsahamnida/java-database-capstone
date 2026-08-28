@@ -11,24 +11,31 @@ import java.util.List;
 @Table(name = "doctors")
 public class Doctor {
 
+    // Primary Key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Doctor Name
     @NotBlank(message = "Name is required")
     private String name;
 
+    // Doctor Email
     @Email(message = "Invalid email")
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
 
+    // Doctor Phone Number
     private String phone;
 
+    // Doctor Password
     private String password;
 
+    // Doctor Specialization
     @NotBlank(message = "Specialization is required")
     private String specialization;
 
+    // Available Time Slots
     @ElementCollection
     @CollectionTable(
             name = "doctor_available_times",
@@ -37,8 +44,28 @@ public class Doctor {
     @Column(name = "available_time")
     private List<LocalTime> availableTimes;
 
+    // Default Constructor
     public Doctor() {
     }
+
+    // Constructor
+    public Doctor(
+            String name,
+            String email,
+            String phone,
+            String password,
+            String specialization,
+            List<LocalTime> availableTimes
+    ) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.specialization = specialization;
+        this.availableTimes = availableTimes;
+    }
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
